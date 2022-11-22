@@ -24,13 +24,12 @@
   </div>  
   <div class="content">
     <div class="form">
-      <input type="file" accept="image/png">
-      <input type="text" placeholder="commentaire">
+      <input type="file" accept="image/png" id="image">
+      <input type="text" placeholder="commentaire" id="commentaire">
     </div>
     <div class="button">
-      <button class="btn">Create</button>
+      <button class="btn" onclick="handleClickPost('PostArticle')">Create</button>
     </div>
-    <div id="api-rawRes"></div>
   </div>
 </body>
 </html>

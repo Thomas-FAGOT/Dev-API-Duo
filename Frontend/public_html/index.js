@@ -1,17 +1,15 @@
-
-function test(){
-    console.log('test')
-}
-
+//Fonction pour se connecter
 function handleLogin(){
-    console.log('test')
+    //Déclaration des variables
     var data = new FormData();
     let username = document.getElementById('usernameForm')
     let password = document.getElementById('passwordForm')
-    console.log(username,password)
+
+    //Récupération des valeurs passés dans le formulaire de connexion
     data.append('username', username.value);
     data.append('password', password.value);
 
+    //header de la requête
     var config = {
         method: 'post',
         url: 'http://127.0.0.1: 8000/login/',
@@ -35,7 +33,7 @@ function handleLogin(){
 
 }
 
-
+//Fonction pour les requêtes de type GET (Afficher)
 function handleclick(route) {
     var data = '';
     var token = window.localStorage['token'];
@@ -50,7 +48,10 @@ function handleclick(route) {
 
     axios(config)
         .then(function (response) {
-            document.getElementById('image').src = response.data.image;
+            var nbImg = response.data.length();
+            for (let i = 0; i < nbImg; i++) {
+                document.getElementById('image') += '<img id="image" src="'+ response.data.image + '" alt=""> <br>'
+            }
         })
         .catch(function (error) {
             console.log(error);
@@ -58,6 +59,9 @@ function handleclick(route) {
 
 }
 
+
+
+//Fonction pour les requêtes de type POST (Ajouter)
 function handleclickPost(route) {
     let url = "http://localhost:3000/" + route;
     let img = document.getElementById("image").src;
@@ -75,6 +79,7 @@ function handleclickPost(route) {
         .catch((error) => console.log(error))
 }
 
+//Fonction pour les requêtes de type PUT (Modifier)
 function handleclickPut(route) {
     let url = "http://localhost:3000/" + route;
 

@@ -11,38 +11,29 @@
     <script defer src="./index.js"></script>
 </head>
 <body>
-    <div class="login-card-container">
-        <div class="login-card">
-            <div class="login-card-logo">
-                <img src="../img/Logo.jfif" alt="Logo">
+<div class="login-card-container">
+    <div class="login-card">
+        <div class="login-card-logo">
+            <img src="../img/Logo.jfif" alt="Logo">
+        </div>
+        <div class="login-card-header">
+            <h1>Sign In</h1>
+        </div>
+        <div class="login-card-form">
+            <div class="form-item">
+                <span class="form-item-icon material-symbols-rounded">person</span>
+                <input type="text" placeholder="Enter Username" id="usernameForm">
             </div>
-            <div class="login-card-header">
-                <h1>Sign In</h1>
-                <div>Please login to use the platform</div>
+            <div class="form-item">
+                <span class="form-item-icon material-symbols-rounded">lock</span>
+                <input type="password" placeholder="Enter Password" id="passwordForm" required>
             </div>
-            <div class="login-card-form">
-                <div class="form-item">
-                    <span class="form-item-icon material-symbols-rounded">mail</span>
-                    <input type="text" placeholder="Enter Username" id="usernameForm" autofocus required>
-                </div>
-                <div class="form-item">
-                    <span class="form-item-icon material-symbols-rounded">lock</span>
-                    <input type="password" placeholder="Enter Password" id="passwordForm" required>
-                </div>
-                <div class="form-item-other">
-                    <div class="checkbox">
-                        <input type="checkbox" id="rememberMe" checked>
-                        <label for="rememberMe">Remember me</label>
-                    </div>
-                    <a href="#"> I forgot my password!</a>
-                </div>
-                <button type="submit" onclick="handleLogin()">Sign In</button>
-            </div>
-            <div class="login-card-footer">
-                Don't have an account? <a href="#">Create a free account.</a>
-            </div>
+            <button type="submit" onclick="handleLogin()">Sign In</button>
+        </div>
+        <div class="login-card-footer">
+            Don't have an account? <a href="Register.html">Create a free account.</a>
         </div>
     </div>
-    
+</div>
 </body>
 </html>

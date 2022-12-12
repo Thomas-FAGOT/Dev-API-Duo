@@ -25,10 +25,13 @@
   <div class="content">
     <h3>Appuyer sur le bouton pour afficher un de vos post</h3>
     <div class="button">
-      <button class="btn" onclick="handleclickOne('api/posts/1/')">Get One</button><br>
+        <input type="text" placeholder="ID du post à afficher" id="search_id">
+        <button class="btn" onclick="handleclickOne('api/posts/')">Get One</button><br>
         <h3 id="ID"></h3>
       <img id="image" src="" class="toto">
       <p id="text"  class="toto"> </p>
+        <h3 id="search_date"></h3>
+
     </div>
   </div>    
 </body>

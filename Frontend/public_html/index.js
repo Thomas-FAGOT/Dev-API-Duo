@@ -1,5 +1,5 @@
 //Fonction pour se connecter
-function handleLogin(){
+function handleLogin() {
     //Déclaration des variables
     var data = new FormData();
     let username = document.getElementById('usernameForm')
@@ -13,14 +13,14 @@ function handleLogin(){
     var config = {
         method: 'post',
         url: 'http://127.0.0.1:8000/login/',
-        data : data
+        data: data
     };
 
     axios(config)
         .then(function (response) {
             console.log(JSON.stringify(response.data));
             console.log(response);
-            if(response.status === 200) {
+            if (response.status === 200) {
                 console.log('cc ça marche');
                 window.localStorage['token'] = JSON.stringify(response.data);
                 window.location.href = "HomePage.html"
@@ -34,7 +34,7 @@ function handleLogin(){
 }
 
 //Fonction pour les requêtes de type GET (Afficher)
-function    handleclickOne(route) {
+function handleclickOne(route) {
     let data = '';
     let token = JSON.parse(window.localStorage['token']);
     console.log(token);
@@ -46,7 +46,7 @@ function    handleclickOne(route) {
         headers: {
             'Authorization': 'Bearer ' + token['access']
         },
-        data : data
+        data: data
     };
 
     axios(config)
@@ -62,7 +62,7 @@ function    handleclickOne(route) {
 
 }
 
-function handleclickAll(){
+function handleclickAll() {
     let token = JSON.parse(window.localStorage['token']);
 
     var config = {
@@ -78,25 +78,22 @@ function handleclickAll(){
             console.log(JSON.stringify(response.data));
             let container = document.getElementById('AllImages');
             response.data.forEach(el => {
-                let img =  document.createElement("img");
-                let text =  document.createElement("text");
-                let id =  document.createElement("h3");
-                let date = document.createElement('h3')
-                img.classList.add("toto");
-                img.src = el.image;
-                text.innerHTML = el.content;
-                id.innerHTML = "ID : " + el.url.split('/')[5];
-                date.innerHTML = el.date;
-                container.appendChild(id);
-                container.appendChild(img);
-                container.appendChild(text);
-                container.appendChild(date);
+                    let img = document.createElement("img");
+                    let text = document.createElement("text");
+                    let id = document.createElement("h3");
+                    let date = document.createElement('h3')
+                    img.classList.add("toto");
+                    img.src = el.image;
+                    text.innerHTML = el.content;
+                    id.innerHTML = "ID : " + el.url.split('/')[5];
+                    date.innerHTML = el.date;
+                    container.appendChild(id);
+                    container.appendChild(img);
+                    container.appendChild(text);
+                    container.appendChild(date);
 
                 }
             );
-
-
-
 
 
         })
@@ -108,30 +105,29 @@ function handleclickAll(){
 
 
 //Fonction pour les requêtes de type POST (Ajouter)
-function handleclickPost(route) {
-    var FormData = require('form-data');
-    var fs = require('fs');
-    var data = new FormData();
-    data.append('file', fs.createReadStream('/C:/Users/maxim/Downloads/png-transparent-two-checked-flags-racing-flags-auto-racing-racing-flag-miscellaneous-game-flag-png-free-download.png'));
-    data.append('content', 'DSJQDOISQDJOSQUDJQOSIDJSQODIJSQODIJSQOIDJQSOIDJSQOIDJSQOIDJQOIDJSQ');
+async function handleclickPost(route) {
+    let token = JSON.parse(window.localStorage['token']);
+    let formData = new FormData();
+    inp = document.getElementById('image')
+    let file = inp.files[0];
 
-    var config = {
-        method: 'post',
-        url: 'http://127.0.0.1:8000/post/',
-        headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwODQwODg3LCJpYXQiOjE2NzA4MzcyODcsImp0aSI6IjFmYjdjOTMwOTE3NzQxYTE5NDhkOTIzOTg3MTNiMDA1IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJUZXN0MiJ9.mSS64Z69W7TZNCCrK1QcCIisUR-8Gsv9sAn0x7q08DM',
-            ...data.getHeaders()
-        },
-        data : data
-    };
+    formData.append("file", file);
+    formData.append("content", document.getElementById('commentaire').value);
 
-    axios(config)
-        .then(function (response) {
-            console.log(JSON.stringify(response.data));
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+    const ctrl = new AbortController()    // timeout
+    setTimeout(() => ctrl.abort(), 5000);
+
+    try {
+        let r = await fetch('http://127.0.0.1:8000/post/',
+            {
+                method: "POST", body: formData, signal: ctrl.signal, headers: {
+                    'Authorization': 'Bearer ' + token['access']
+                }
+            });
+        console.log('HTTP response code:', r.status);
+    } catch (e) {
+        console.log('Huston we have problem...:', e);
+    }
 
 }
 

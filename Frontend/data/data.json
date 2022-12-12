@@ -1,0 +1,30 @@
+[
+    {
+        "url": "http://localhost:8000/api/posts/1/",
+        "date": null,
+        "image": "http://localhost:8000/media/images/PNG_transparency_demonstration_1.png",
+        "content": "EKIAZOPEZPOAEO AZAZIOEK JEZAEIJ OIAZEJ EZJA EOAZJE AZIJOE AZOI",
+        "user": "http://localhost:8000/api/users/1/"
+    },
+    {
+        "url": "http://localhost:8000/api/posts/2/",
+        "date": null,
+        "image": "http://localhost:8000/media/images/PNG_transparency_demonstration_1_nyPeJH5.png",
+        "content": "EKIAZOPEZPOAEO AZAZIOEK JEZAEIJ OIAZEJ EZJA EOAZJE AZIJOE AZOI",
+        "user": "http://localhost:8000/api/users/1/"
+    },
+    {
+        "url": "http://localhost:8000/api/posts/3/",
+        "date": null,
+        "image": "http://localhost:8000/media/images/PNG_transparency_demonstration_1_qNGiYuo.png",
+        "content": "EKIAZOPEZPOAEO AZAZIOEK JEZAEIJ OIAZEJ EZJA EOAZJE AZIJOE AZOI",
+        "user": "http://localhost:8000/api/users/1/"
+    },
+    {
+        "url": "http://localhost:8000/api/posts/4/",
+        "date": null,
+        "image": "http://localhost:8000/media/images/PNG_transparency_demonstration_1_wEiUtVV.png",
+        "content": "EKIAZOPEZPOAEO AZAZIOEK JEZAEIJ OIAZEJ EZJA EOAZJE AZIJOE AZOI",
+        "user": "http://localhost:8000/api/users/1/"
+    }
+]

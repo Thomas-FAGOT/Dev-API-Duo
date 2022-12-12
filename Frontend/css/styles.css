@@ -9,8 +9,10 @@ body{
     background: linear-gradient(to right, #373778, #5c5cc5);
 }
 
+.toto{
+    max-height: 100px;
+}
 .content {
-    width: 450;
     background: rgba(255, 255, 255, .5);
     padding: 3rem;
     margin-top: 100px;

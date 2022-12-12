@@ -12,7 +12,7 @@ function handleLogin(){
     //header de la requête
     var config = {
         method: 'post',
-        url: 'http://127.0.0.1: 8000/login/',
+        url: 'http://127.0.0.1:8000/login/',
         data : data
     };
 
@@ -34,24 +34,71 @@ function handleLogin(){
 }
 
 //Fonction pour les requêtes de type GET (Afficher)
-function handleclick(route) {
-    var data = '';
-    var token = window.localStorage['token'];
-    var config = {
+function    handleclickOne(route) {
+    let data = '';
+    let token = JSON.parse(window.localStorage['token']);
+    console.log(token);
+    console.log(token['access']);
+
+    let config = {
         method: 'get',
         url: 'http://127.0.0.1:8000/' + route,
         headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY5MTI5ODQxLCJpYXQiOjE2NjkxMDgyNDEsImp0aSI6IjJmY2M2ZGNlYmEyNTQ2ZGY5ZWNmMTY0ODQ0YjkwM2QzIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiJ9.13kOd3dzfILFPRwT9Ed5gGc9PqVfPR-3z9BF1pV6DT4'
+            'Authorization': 'Bearer ' + token['access']
         },
         data : data
     };
 
     axios(config)
         .then(function (response) {
-            var nbImg = response.data.length();
-            for (let i = 0; i < nbImg; i++) {
-                document.getElementById('image') += '<img id="image" src="'+ response.data.image + '" alt=""> <br>'
-            }
+            document.getElementById('image').src = response.data.image;
+            document.getElementById('text').innerHTML = response.data.content;
+            document.getElementById('ID').innerHTML = "ID : " + response.data.url.split('/')[5];
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}
+
+function handleclickAll(){
+    let token = JSON.parse(window.localStorage['token']);
+
+    var config = {
+        method: 'get',
+        url: 'http://127.0.0.1:8000/api/posts/',
+        headers: {
+            'Authorization': 'Bearer ' + token['access']
+        },
+    };
+
+    axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            let container = document.getElementById('AllImages');
+            response.data.forEach(el => {
+                let img =  document.createElement("img");
+                let text =  document.createElement("text");
+                let id =  document.createElement("h3");
+                let date = document.createElement('h3')
+                img.classList.add("toto");
+                img.src = el.image;
+                text.innerHTML = el.content;
+                id.innerHTML = "ID : " + el.url.split('/')[5];
+                date.innerHTML = el.date;
+                container.appendChild(id);
+                container.appendChild(img);
+                container.appendChild(text);
+                container.appendChild(date);
+
+                }
+            );
+
+
+
+
+
         })
         .catch(function (error) {
             console.log(error);
@@ -60,10 +107,9 @@ function handleclick(route) {
 }
 
 
-
 //Fonction pour les requêtes de type POST (Ajouter)
 function handleclickPost(route) {
-    let url = "http://localhost:3000/" + route;
+    let url = "http://localhost:8000/" + route;
     let img = document.getElementById("image").src;
     let com = document.getElementById("commentaire").ariaValueMax;
     let arrayDataName = {

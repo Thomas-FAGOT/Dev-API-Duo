@@ -24,11 +24,12 @@
   </div>  
   <div class="content">
     <h3>Renseigner les champs pour modifier un post puis appuyer sur le bouton</h3>
-    <p>Vous pouvez ne changer que l'image, que le commentaire ou les deux</p>
+    <p>Vous pouvez l'image, le commentaire ou les deux</p>
     <div class="form">
-      <input type="text" placeholder="ID du post à modifier">
-      <input type="file" accept="image/png">
-      <input type="text" placeholder="commentaire">
+      <input type="text" placeholder="ID du post à modifier" class="text"><br>
+      <label for="file" class="image">Choisir une image</label><br>
+      <input type="file" name="file" id="file" class="image" accept="image/png" /><br>
+      <input type="text" placeholder="commentaire" class="text">
     </div>
     <div class="button">
       <button class="btn" >Modify</button>

@@ -41,6 +41,6 @@ urlpatterns = [
                   path('api/post/he/', PostViewThisUser.as_view()),
                   path('api/modif/post/', ModifyPost.as_view()),
                   path('register/', UserRegisterCreate.as_view()),
-                  path('post/', PostView.as_view())
-
+                  path('post/', PostView.as_view()),
+                  path('api/del/', DeletePost.as_view())
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

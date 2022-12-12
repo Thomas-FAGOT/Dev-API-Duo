@@ -92,7 +92,20 @@ class ModifyPost(APIView):
             return Response("Vous n'avez pas le droit de modifier ce post",
                             status=rest_framework.status.HTTP_401_UNAUTHORIZED)
 
-
+class DeletePost(APIView):
+    permission_classes = (IsAuthenticated,)
+    def put(self, request):
+        user = request.user
+        id = request.data['id']
+        content = None
+        file = None
+        post = Post.objects.all().get(id=id)
+        if post.user == user:
+            post.delete()
+            return Response("Post supprimé", status=rest_framework.status.HTTP_200_OK)
+        else:
+            return Response("Vous n'avez pas le droit de supprimer ce post",
+                            status=rest_framework.status.HTTP_401_UNAUTHORIZED)
 
 
 from rest_framework import permissions
@@ -208,6 +221,7 @@ class PostView(APIView):
         new_post = Post()
         new_post.user = request.user
         new_post.image = request.data['file']
+        print(request.data['file'])
         new_post.image.name = f"{request.user}_post_{len(Post.objects.all()) + 1}.png"
         new_post.content = request.data['content']
         new_post.date = datetime.datetime.today()

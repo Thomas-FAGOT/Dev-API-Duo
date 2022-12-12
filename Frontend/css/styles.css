@@ -27,6 +27,14 @@ body{
     display: flex;
     justify-content: center;
 }
+.nav-container {
+    justify-content: space-between;
+
+}
+
+#logout{
+    max-height: 52px;
+}
 
 li {
     all: unset;

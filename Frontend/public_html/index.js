@@ -228,3 +228,28 @@ function handleRegister() {
         });
 
 }
+
+
+function handleLogout() {
+    var config = {
+        method: 'post',
+        url: 'http://127.0.0.1:8000/logout/',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data : JSON.parse(window.localStorage['token'])
+    };
+
+
+    axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    window.localStorage['token'] = null;
+    window.location.href = "Log-in.html"
+
+}

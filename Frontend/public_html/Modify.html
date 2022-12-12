@@ -26,12 +26,12 @@
     <h3>Renseigner les champs pour modifier un post puis appuyer sur le bouton</h3>
     <p>Vous pouvez ne changer que l'image, que le commentaire ou les deux</p>
     <div class="form">
-      <input type="text" placeholder="ID du post à modifier">
-      <input type="file" accept="image/png">
-      <input type="text" placeholder="commentaire">
+      <input type="text" placeholder="ID du post à modifier" id="id_modif">
+      <input type="file" accept="image/png" id="modif_file">
+      <input type="text" placeholder="commentaire" id="modif_comment">
     </div>
     <div class="button">
-      <button class="btn" >Modify</button>
+      <button class="btn" onclick="handleModif()" >Modify</button>
     </div>
     <div id="api-rawRes"></div>
   </div> 

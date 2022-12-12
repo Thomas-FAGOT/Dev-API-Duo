@@ -84,9 +84,9 @@ function handleclickAll() {
                     let date = document.createElement('h3')
                     img.classList.add("toto");
                     img.src = el.image;
-                    text.innerHTML = el.content;
+                    text.innerHTML = "Comment :     " + el.content;
                     id.innerHTML = "ID : " + el.url.split('/')[5];
-                    date.innerHTML = el.date;
+                    date.innerHTML = "Created at : " + el.date;
                     container.appendChild(id);
                     container.appendChild(img);
                     container.appendChild(text);
@@ -132,13 +132,53 @@ async function handleclickPost(route) {
 }
 
 //Fonction pour les requêtes de type PUT (Modifier)
-function handleclickPut(route) {
-    let url = "http://localhost:3000/" + route;
+function handleclickDelete() {
+    let token = JSON.parse(window.localStorage['token']);
+    var data = new FormData();
+    data.append('id', document.getElementById('del_id').value);
 
-    axios.put(url, arrayDataName)
-        .then((response) => {
-            document.getElementById("image").src = response.data[0].url;
-            docu
+    var config = {
+        method: 'put',
+        url: 'http://127.0.0.1:8000/api/del/',
+        headers: {
+            'Authorization': 'Bearer ' + token['access'],
+        },
+        data : data
+    };
+
+    axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
         })
-        .catch((error) => console.log(error))
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}
+
+
+async function handleModif() {
+    let token = JSON.parse(window.localStorage['token']);
+    let formData = new FormData();
+    inp = document.getElementById('modif_file')
+    let file = inp.files[0];
+
+    formData.append("file", file);
+    formData.append("content", document.getElementById('modif_comment').value);
+    formData.append("id", document.getElementById('id_modif').value);
+    const ctrl = new AbortController()    // timeout
+    setTimeout(() => ctrl.abort(), 5000);
+
+    try {
+        let r = await fetch('http://127.0.0.1:8000/api/modif/post/',
+            {
+                method: "PUT", body: formData, signal: ctrl.signal, headers: {
+                    'Authorization': 'Bearer ' + token['access']
+                }
+            });
+        console.log('HTTP response code:', r.status);
+    } catch (e) {
+        console.log('Huston we have problem...:', e);
+    }
+
 }

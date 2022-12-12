@@ -19,6 +19,7 @@ La demande du client était la suivant :
   Tout en respectant la RGPD avec le chiffrement des MDP, le tout dans un repo GitHub pour faciliter la mise en production."
   
 2) Téchnologies
+
 Pour répondre à la demande du client nous avons choisi d'utiliser les technologies suivantes :
   Backend :
     - BDD : MongoDB
@@ -30,6 +31,7 @@ Pour répondre à la demande du client nous avons choisi d'utiliser les technolo
     - JS (axios + fetch)
     
 3) Installation
+
 Installation du serveur test (sous Windows ici) :
 
 Nécessite Python 3.9+ Et si posssible un IDE Type Pycharm (résoudra les problèmes de packages classiques de Python)

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
+
+    <title>Modify</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="./index.js"></script>
+</head>
+<body>
+  <div class="nav-bar-container">
+    <div class="nav-bar">
+ <li class="nav-container">
+            <ul>
+                <li class="nav-list">
+                    <ul><a href="HomePage.html">HOME</a></ul>
+                    <ul><a href="GetOne.html">GET ONE</a></ul>
+                    <ul><a href="GetAll.html">GET ALL</a></ul>
+                    <ul><a href="Create.html">CREATE</a></ul>
+                    <ul><a href="Delete.html">DELETE</a></ul>
+                    <ul><a href="Modify.html">MODIFY</a></ul>
+                </li>
+            </ul>
+            <ul id="logout">
+                <li>
+                    <ul><a href="Log-in.html" onclick="handleLogout()"><span class="form-item-icon material-symbols-rounded">Logout</span></a></ul>
+                </li>
+            </ul>
+        <li/>
+    </div>
+  </div>  
+  <div class="content">
+    <h3>Renseigner les champs pour modifier un post puis appuyer sur le bouton</h3>
+      <p>Vous pouvez l'image, le commentaire ou les deux</p>
+      <div class="form">
+          <input type="text" placeholder="ID du post à modifier" class="text" id="id_modif"><br>
+          <input type="file" name="file" id="modif_file" class="image" accept="image/png" /><br>
+          <input type="text" placeholder="commentaire" class="text" id="modif_comment">
+      </div>
+    <div class="button">
+      <button class="btn" onclick="handleModif()" >Modify</button>
+    </div>
+    <div id="api-rawRes"></div>
+  </div> 
+</body>
+</html>

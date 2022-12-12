@@ -78,7 +78,7 @@ class ModifyPost(APIView):
             except KeyError:
                 res = 'Contenu non modifié'
             try:
-                if request.data['file']:
+                if request.data['file'] != 'undefined':
                     post.image = request.data['file']
                     if res == 'Contenu modifié (Texte)':
                         res += ' + (Img)'

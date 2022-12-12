@@ -9,6 +9,7 @@
 La demande du client était la suivant :
  "Création d'un réseau social interne à l'entreprise qui permettrai à mes collaborateurs d'échanger entre eux des images avec du texte.
   Avec les fonctionnalitées suivantes :
+  
     -Login/Logout
     -Get all posts
     -Get post
@@ -22,10 +23,12 @@ La demande du client était la suivant :
 
 Pour répondre à la demande du client nous avons choisi d'utiliser les technologies suivantes :
   -Backend :
+  
     -BDD : MongoDB
     -Serveur : Django
     -API REST : Django REST FRAMWORK
   -Frontend :
+  
     -HTML
     -CSS
     -JS (axios + fetch)

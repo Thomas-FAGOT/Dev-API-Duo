@@ -28,6 +28,10 @@ body{
     justify-content: center;
 }
 
+.nav-container {
+    justify-content: space-between;
+}
+
 li {
     all: unset;
     display: flex;
@@ -40,6 +44,11 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+}
+
+#logout {
+    justify-content: flex-end;
+    max-height: 52px;
 }
   
 li a {

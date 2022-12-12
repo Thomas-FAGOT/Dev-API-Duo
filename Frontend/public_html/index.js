@@ -109,20 +109,30 @@ function handleclickAll(){
 
 //Fonction pour les requêtes de type POST (Ajouter)
 function handleclickPost(route) {
-    let url = "http://localhost:8000/" + route;
-    let img = document.getElementById("image").src;
-    let com = document.getElementById("commentaire").ariaValueMax;
-    let arrayDataName = {
-        "url": "",
-        "date": null,
-        "image": img,
-        "content": com,
-        "user": ""
-    }
-    
-    axios.post(url, arrayDataName)
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error))
+    var FormData = require('form-data');
+    var fs = require('fs');
+    var data = new FormData();
+    data.append('file', fs.createReadStream('/C:/Users/maxim/Downloads/png-transparent-two-checked-flags-racing-flags-auto-racing-racing-flag-miscellaneous-game-flag-png-free-download.png'));
+    data.append('content', 'DSJQDOISQDJOSQUDJQOSIDJSQODIJSQODIJSQOIDJQSOIDJSQOIDJSQOIDJQOIDJSQ');
+
+    var config = {
+        method: 'post',
+        url: 'http://127.0.0.1:8000/post/',
+        headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwODQwODg3LCJpYXQiOjE2NzA4MzcyODcsImp0aSI6IjFmYjdjOTMwOTE3NzQxYTE5NDhkOTIzOTg3MTNiMDA1IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJUZXN0MiJ9.mSS64Z69W7TZNCCrK1QcCIisUR-8Gsv9sAn0x7q08DM',
+            ...data.getHeaders()
+        },
+        data : data
+    };
+
+    axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
 }
 
 //Fonction pour les requêtes de type PUT (Modifier)

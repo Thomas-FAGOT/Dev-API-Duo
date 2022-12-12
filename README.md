@@ -9,26 +9,26 @@
 La demande du client était la suivant :
  "Création d'un réseau social interne à l'entreprise qui permettrai à mes collaborateurs d'échanger entre eux des images avec du texte.
   Avec les fonctionnalitées suivantes :
-    - Login/Logout
-    - Get all posts
-    - Get post
-    - Created nes post
-    - Modify post
-    - Delete post
+    -Login/Logout
+    -Get all posts
+    -Get post
+    -Created new post
+    -Modify post
+    -Delete post
    
   Tout en respectant la RGPD avec le chiffrement des MDP, le tout dans un repo GitHub pour faciliter la mise en production."
   
 2) Téchnologies
 
 Pour répondre à la demande du client nous avons choisi d'utiliser les technologies suivantes :
-  Backend :
-    - BDD : MongoDB
-    - Serveur : Django
-    - API REST : Django REST FRAMWORK
-  Frontend :
-    - HTML
-    - CSS
-    - JS (axios + fetch)
+  -Backend :
+    -BDD : MongoDB
+    -Serveur : Django
+    -API REST : Django REST FRAMWORK
+  -Frontend :
+    -HTML
+    -CSS
+    -JS (axios + fetch)
     
 3) Installation
 

@@ -14,29 +14,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from rest_framework.routers import DefaultRouter
-from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView
 
 import api.views
 from authen.views import *
 from api.views import *
-
+from authen.views import BlacklistRefreshView
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+
 router = DefaultRouter()
 router.register(r'users', UserViewSet, basename='user')
-router.register(r'posts', PostViewSet,basename='post')
+router.register(r'posts', PostViewSet, basename='post')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('login/', MyObtainTokenPairView.as_view(), name='token_obtain_pair'),
-    path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('logout/', LogoutView.as_view(), name='auth_logout'),
-    path('api/username/', ViewUsername.as_view()),
-    #path('api/post/', api.views.ViewPosts.as_view()),
-    path("api/", include(router.urls))
+                  path('admin/', admin.site.urls),
+                  path('login/', MyObtainTokenPairView.as_view(), name='token_obtain_pair'),
+                  path('logout/', BlacklistRefreshView.as_view()),
+                  path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+                  path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+                  path('api/username/', ViewUsername.as_view()),
+                  path("api/", include(router.urls)),
+                  path('api/post/me/', PostViewUser.as_view()),
+                  path('api/post/he/', PostViewThisUser.as_view()),
+                  path('api/modif/post/', ModifyPost.as_view()),
+                  path('register/', UserRegisterCreate.as_view()),
+                  path('post/', PostView.as_view())
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

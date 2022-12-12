@@ -22,6 +22,7 @@ La demande du client était la suivant :
 2) Téchnologies
 
 Pour répondre à la demande du client nous avons choisi d'utiliser les technologies suivantes :
+  
   Backend :
   
     -BDD : MongoDB

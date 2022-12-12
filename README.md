@@ -5,6 +5,7 @@
 ||----------------------------------||
 
 1) Objectifs
+
 La demande du client était la suivant :
  "Création d'un réseau social interne à l'entreprise qui permettrai à mes collaborateurs d'échanger entre eux des images avec du texte.
   Avec les fonctionnalitées suivantes :
@@ -15,7 +16,7 @@ La demande du client était la suivant :
     - Modify post
     - Delete post
    
-  Tout en respectant la RGPD avec le cryptage des MDP, le tout dans un repo GitHub pour faciliter la mise en production."
+  Tout en respectant la RGPD avec le chiffrement des MDP, le tout dans un repo GitHub pour faciliter la mise en production."
   
 2) Téchnologies
 Pour répondre à la demande du client nous avons choisi d'utiliser les technologies suivantes :
